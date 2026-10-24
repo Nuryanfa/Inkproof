@@ -1,4 +1,4 @@
-# Roadmap — PDF Signature Verifier
+# Roadmap — TrueSign
 
 Estimasi memakai sekitar **8 jam per minggu**. Setiap fase ditutup oleh gate; jangan lanjut sebelum gate terpenuhi.
 

@@ -1,13 +1,14 @@
-# PRD — PDF Signature Verifier
+# PRD — TrueSign
 
 | | |
 |---|---|
 | **Status** | Draft v0.1 |
+| **Produk** | TrueSign |
 | **Pemilik** | Nur Yanfa (@Nuryanfa) |
 | **Terakhir diperbarui** | 2026-10-24 |
 | **Dokumen terkait** | [design.md](design.md) · [threat-model.md](threat-model.md) · [roadmap.md](roadmap.md) · [test-plan.md](test-plan.md) |
 
-> Nama produk masih nama kerja. Cek merek dagang dan ketersediaan domain sebelum dipakai publik.
+> Cek ketersediaan domain dan merek dagang sebelum launch publik.
 
 ---
 

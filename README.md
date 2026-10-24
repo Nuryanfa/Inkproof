@@ -1,6 +1,6 @@
-# PDF Signature Verifier
+# TrueSign
 
-> Nama kerja. Status: **dalam pengembangan (fase F0)**.
+> Status: **dalam pengembangan (fase F0)**.
 
 Verifier tanda tangan digital PDF yang memeriksa dua hal:
 
