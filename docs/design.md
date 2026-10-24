@@ -308,7 +308,7 @@ Spesifikasi lengkap: [api/openapi.yaml](api/openapi.yaml).
 
 **Middleware (urut):** request ID → recover panic → limit body (`http.MaxBytesReader`) → rate limit (per IP, per API key) → auth → timeout → handler.
 
-**Konkurensi:** worker pool berukuran `VERIFIER_WORKERS` (default = jumlah vCPU). Request yang tidak mendapat slot dalam 2 detik ditolak `503` dengan `Retry-After`, agar VM tidak kehabisan memori.
+**Konkurensi:** worker pool berukuran `INKPROOF_WORKERS` (default = jumlah vCPU). Request yang tidak mendapat slot dalam 2 detik ditolak `503` dengan `Retry-After`, agar VM tidak kehabisan memori.
 
 **Penanganan file:** body dibaca ke memori (maksimal 20 MiB) sebagai `bytes.Reader` lalu dibuang setelah respons. Tidak ada file sementara.
 
@@ -318,14 +318,14 @@ Semua lewat environment variable:
 
 | Variabel | Default | Keterangan |
 |---|---|---|
-| `VERIFIER_ADDR` | `:8080` | Alamat listen |
-| `VERIFIER_TRUST_DIR` | `/app/trust` | Lokasi trust store |
-| `VERIFIER_WORKERS` | `runtime.NumCPU()` | Ukuran worker pool |
-| `VERIFIER_MAX_FILE_MB` | `20` | Batas ukuran file |
-| `VERIFIER_TIMEOUT` | `15s` | Timeout per verifikasi |
-| `VERIFIER_RATE_ANON` | `10/h` | Kuota tanpa API key per IP |
-| `VERIFIER_DATABASE_URL` | kosong | Jika kosong, fitur API key dimatikan |
-| `VERIFIER_LOG_LEVEL` | `info` | |
+| `INKPROOF_ADDR` | `:8080` | Alamat listen |
+| `INKPROOF_TRUST_DIR` | `/app/trust` | Lokasi trust store |
+| `INKPROOF_WORKERS` | `runtime.NumCPU()` | Ukuran worker pool |
+| `INKPROOF_MAX_FILE_MB` | `20` | Batas ukuran file |
+| `INKPROOF_TIMEOUT` | `15s` | Timeout per verifikasi |
+| `INKPROOF_RATE_ANON` | `10/h` | Kuota tanpa API key per IP |
+| `INKPROOF_DATABASE_URL` | kosong | Jika kosong, fitur API key dimatikan |
+| `INKPROOF_LOG_LEVEL` | `info` | |
 
 ## 12. Data (fase komersial)
 

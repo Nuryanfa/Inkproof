@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Lint, Test, Vuln
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Install golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+          args: --timeout=5m
+          skip-cache: false
+
+      - name: Test (race detector)
+        run: go test -race -count=1 ./...
+
+      - name: govulncheck
+        uses: golang/govulncheck-action@v1
+        with:
+          go-version-file: go.mod
+
+  fuzz-smoke:
+    name: Fuzz smoke (60s each)
+    runs-on: ubuntu-latest
+    # Only run on push to main, not every PR — fuzz is slow
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Fuzz FuzzParsePDF
+        run: |
+          if grep -r "FuzzParsePDF" internal/pdf/ 2>/dev/null | grep -q "func Fuzz"; then
+            go test -fuzz=FuzzParsePDF -fuzztime=60s ./internal/pdf/
+          else
+            echo "FuzzParsePDF not yet implemented — skipping"
+          fi
+
+      - name: Fuzz FuzzParseCMS
+        run: |
+          if grep -r "FuzzParseCMS" internal/cms/ 2>/dev/null | grep -q "func Fuzz"; then
+            go test -fuzz=FuzzParseCMS -fuzztime=60s ./internal/cms/
+          else
+            echo "FuzzParseCMS not yet implemented — skipping"
+          fi
+
+      - name: Fuzz FuzzByteRange
+        run: |
+          if grep -r "FuzzByteRange" internal/pdf/ 2>/dev/null | grep -q "func Fuzz"; then
+            go test -fuzz=FuzzByteRange -fuzztime=60s ./internal/pdf/
+          else
+            echo "FuzzByteRange not yet implemented — skipping"
+          fi

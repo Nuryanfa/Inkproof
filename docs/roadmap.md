@@ -27,7 +27,7 @@ Planning lengkap (konteks pasar dan strategi): [dokumen planning](https://claude
 - [ ] `internal/chain`: rantai, trust store loader dengan cek fingerprint
 - [ ] `internal/report`: model, kode temuan, render JSON dan teks
 - [ ] `pkg/verify.Verify` menyatukan pipeline (tanpa revocation, mode offline)
-- [ ] CLI `verifier check` dengan exit code
+- [ ] CLI `inkproof check` dengan exit code
 - [ ] Corpus C-01, C-03, C-04, C-09–C-14, C-20, C-21
 - [ ] Fuzz target `FuzzParsePDF`, `FuzzByteRange`
 

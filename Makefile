@@ -31,11 +31,11 @@ run:
 	$(GO) run ./cmd/server
 
 cli:
-	$(GO) run ./cmd/verifier $(ARGS)
+	$(GO) run ./cmd/inkproof $(ARGS)
 
 pki:
 	$(GO) run ./testdata/pki/gen
 
 build:
-	CGO_ENABLED=0 $(GO) build -trimpath -ldflags="-s -w" -o bin/verifier ./cmd/verifier
+	CGO_ENABLED=0 $(GO) build -trimpath -ldflags="-s -w" -o bin/inkproof ./cmd/inkproof
 	CGO_ENABLED=0 $(GO) build -trimpath -ldflags="-s -w" -o bin/server ./cmd/server

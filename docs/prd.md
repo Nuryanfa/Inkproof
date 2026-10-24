@@ -65,7 +65,7 @@ Prioritas: **P0** = wajib MVP, **P1** = setelah MVP, **P2** = komersial.
 | US-02 | pengguna web | melihat ringkasan dalam bahasa awam dan detail teknis yang bisa dibuka | paham hasilnya tanpa harus mengerti PKI | P0 |
 | US-03 | pengguna mana pun | diberi tahu jika dokumen diubah setelah ditandatangani | tidak tertipu oleh centang hijau | P0 |
 | US-04 | pengguna mana pun | melihat setiap tanda tangan pada dokumen multi-signature secara terpisah | tahu siapa menandatangani apa dan kapan | P0 |
-| US-05 | developer | menjalankan `verifier check file.pdf --format json` | memakai hasilnya di script/pipeline | P0 |
+| US-05 | developer | menjalankan `inkproof check file.pdf --format json` | memakai hasilnya di script/pipeline | P0 |
 | US-06 | developer | memanggil `POST /v1/verify` dan menerima JSON terstruktur | mengotomatisasi verifikasi | P0 |
 | US-07 | developer | memakai trust store sendiri | memverifikasi dokumen dari CA internal | P0 |
 | US-08 | pengguna mana pun | tahu apakah sertifikat penanda tangan sudah dicabut | tidak menerima dokumen dari sertifikat yang dicabut | P0 |
@@ -123,7 +123,7 @@ Prioritas: **P0** = wajib MVP, **P1** = setelah MVP, **P2** = komersial.
 
 ### FR-8 Antarmuka
 - FR-8.1 Library Go `pkg/verify` dengan API stabil.
-- FR-8.2 CLI `verifier check <file> [--format json|text|html] [--trust <dir>] [--offline]`, exit code 0/1/2 untuk passed/failed/indeterminate.
+- FR-8.2 CLI `inkproof check <file> [--format json|text|html] [--trust <dir>] [--offline]`, exit code 0/1/2 untuk passed/failed/indeterminate.
 - FR-8.3 REST API `POST /v1/verify` (multipart), `GET /healthz`, `GET /v1/trust` (info trust store).
 - FR-8.4 Web UI: satu halaman upload, satu halaman hasil.
 

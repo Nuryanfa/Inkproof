@@ -107,7 +107,7 @@ Crash yang ditemukan disimpan di `testdata/fuzz/` sebagai regression test.
 Untuk setiap PDF ber-TTE asli yang dipakai (dokumen milik sendiri atau dokumen publik, tidak disimpan di repo publik bila mengandung data pribadi):
 
 1. Unggah ke `tte.komdigi.go.id/verifyPDF` dan/atau `bsre.bssn.go.id/verify`, catat hasil.
-2. Jalankan `verifier check`.
+2. Jalankan `inkproof check`.
 3. Catat di `docs/cross-check.md`: tanggal, PSrE penerbit, hasil resmi, hasil verifier, catatan perbedaan.
 
 Setiap perbedaan harus dijelaskan (misalnya trust store berbeda, atau verifier ini mendeteksi perubahan yang tidak dicek layanan resmi), bukan diabaikan.
