@@ -1,4 +1,4 @@
-# Technical Design — TrueSign
+# Technical Design — Inkproof
 
 | | |
 |---|---|

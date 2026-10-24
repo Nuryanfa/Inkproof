@@ -1,4 +1,4 @@
-# Roadmap — TrueSign
+# Roadmap — Inkproof
 
 Estimasi memakai sekitar **8 jam per minggu**. Setiap fase ditutup oleh gate; jangan lanjut sebelum gate terpenuhi.
 
@@ -8,7 +8,7 @@ Planning lengkap (konteks pasar dan strategi): [dokumen planning](https://claude
 
 ## F0 — Persiapan (minggu 1)
 
-- [ ] Buat repo `truesign`, `go mod init github.com/nuryanfa/truesign`, struktur folder sesuai `docs/design.md` §2
+- [ ] Buat repo `inkproof`, `go mod init github.com/nuryanfa/inkproof`, struktur folder sesuai `docs/design.md` §2
 - [ ] CI dasar: `golangci-lint`, `go test -race`, `govulncheck`
 - [ ] Makefile dengan target di CLAUDE.md
 - [ ] Spike library di `spike/` (kriteria di ADR-0001), tulis hasilnya, ubah status ADR-0001

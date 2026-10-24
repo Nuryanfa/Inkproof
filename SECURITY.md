@@ -2,10 +2,10 @@
 
 ## Melaporkan Kerentanan
 
-Jika kamu menemukan celah keamanan pada TrueSign, mohon **jangan** buka issue publik.
+Jika kamu menemukan celah keamanan pada Inkproof, mohon **jangan** buka issue publik.
 
 Laporkan secara privat lewat **GitHub Security Advisory**:
-[https://github.com/Nuryanfa/TrueSign/security/advisories/new](https://github.com/Nuryanfa/TrueSign/security/advisories/new)
+[https://github.com/Nuryanfa/Inkproof/security/advisories/new](https://github.com/Nuryanfa/Inkproof/security/advisories/new)
 
 Sertakan:
 - Deskripsi kerentanan dan dampaknya

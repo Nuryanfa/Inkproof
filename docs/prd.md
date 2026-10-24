@@ -1,9 +1,9 @@
-# PRD — TrueSign
+# PRD — Inkproof
 
 | | |
 |---|---|
 | **Status** | Draft v0.1 |
-| **Produk** | TrueSign |
+| **Produk** | Inkproof |
 | **Pemilik** | Nur Yanfa (@Nuryanfa) |
 | **Terakhir diperbarui** | 2026-10-24 |
 | **Dokumen terkait** | [design.md](design.md) · [threat-model.md](threat-model.md) · [roadmap.md](roadmap.md) · [test-plan.md](test-plan.md) |
@@ -14,7 +14,7 @@
 
 ## 1. Ringkasan
 
-TrueSign memeriksa apakah sebuah PDF ditandatangani dengan sertifikat yang dipercaya **dan** apakah isinya berubah sejak ditandatangani. Pembedanya dari verifier biasa: ia juga mendeteksi manipulasi struktural yang sering lolos dari ikon "centang hijau" di PDF viewer, seperti incremental update setelah penandatanganan dan `ByteRange` yang tidak mencakup seluruh file.
+Inkproof memeriksa apakah sebuah PDF ditandatangani dengan sertifikat yang dipercaya **dan** apakah isinya berubah sejak ditandatangani. Pembedanya dari verifier biasa: ia juga mendeteksi manipulasi struktural yang sering lolos dari ikon "centang hijau" di PDF viewer, seperti incremental update setelah penandatanganan dan `ByteRange` yang tidak mencakup seluruh file.
 
 Produk hadir dalam tiga bentuk dari satu inti yang sama: **library Go**, **CLI**, dan **REST API + web UI**.
 

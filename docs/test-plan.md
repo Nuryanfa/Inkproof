@@ -1,4 +1,4 @@
-# Test Plan — TrueSign
+# Test Plan — Inkproof
 
 | | |
 |---|---|

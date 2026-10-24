@@ -1,4 +1,4 @@
-# TrueSign
+# Inkproof
 
 > Status: **dalam pengembangan (fase F0)**.
 

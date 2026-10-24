@@ -1,4 +1,4 @@
-# Threat Model — TrueSign
+# Threat Model — Inkproof
 
 | | |
 |---|---|
