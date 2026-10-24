@@ -8,7 +8,7 @@ Planning lengkap (konteks pasar dan strategi): [dokumen planning](https://claude
 
 ## F0 — Persiapan (minggu 1)
 
-- [ ] Buat repo `pdf-verifier`, `go mod init`, struktur folder sesuai `docs/design.md` §2
+- [ ] Buat repo `truesign`, `go mod init github.com/nuryanfa/truesign`, struktur folder sesuai `docs/design.md` §2
 - [ ] CI dasar: `golangci-lint`, `go test -race`, `govulncheck`
 - [ ] Makefile dengan target di CLAUDE.md
 - [ ] Spike library di `spike/` (kriteria di ADR-0001), tulis hasilnya, ubah status ADR-0001

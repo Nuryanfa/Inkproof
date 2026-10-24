@@ -1,4 +1,4 @@
-# Test Plan — PDF Signature Verifier
+# Test Plan — TrueSign
 
 | | |
 |---|---|

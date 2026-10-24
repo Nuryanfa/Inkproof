@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: PDF Signature Verifier API
+  title: TrueSign API
   version: 0.1.0
   description: |
     Memverifikasi tanda tangan digital pada PDF dan mendeteksi perubahan setelah penandatanganan.

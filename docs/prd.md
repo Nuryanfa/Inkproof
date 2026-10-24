@@ -14,7 +14,7 @@
 
 ## 1. Ringkasan
 
-PDF Signature Verifier memeriksa apakah sebuah PDF ditandatangani dengan sertifikat yang dipercaya **dan** apakah isinya berubah sejak ditandatangani. Pembedanya dari verifier biasa: ia juga mendeteksi manipulasi struktural yang sering lolos dari ikon "centang hijau" di PDF viewer, seperti incremental update setelah penandatanganan dan `ByteRange` yang tidak mencakup seluruh file.
+TrueSign memeriksa apakah sebuah PDF ditandatangani dengan sertifikat yang dipercaya **dan** apakah isinya berubah sejak ditandatangani. Pembedanya dari verifier biasa: ia juga mendeteksi manipulasi struktural yang sering lolos dari ikon "centang hijau" di PDF viewer, seperti incremental update setelah penandatanganan dan `ByteRange` yang tidak mencakup seluruh file.
 
 Produk hadir dalam tiga bentuk dari satu inti yang sama: **library Go**, **CLI**, dan **REST API + web UI**.
 

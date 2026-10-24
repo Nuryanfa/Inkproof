@@ -1,4 +1,4 @@
-# Technical Design — PDF Signature Verifier
+# Technical Design — TrueSign
 
 | | |
 |---|---|

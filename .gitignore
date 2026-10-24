@@ -23,3 +23,7 @@ spike/
 .env.*
 *.pem
 *.key
+
+# Exception: public root CA certs and test PKI certs are intentional
+!trust/roots/*.pem
+!testdata/pki/**/*.pem

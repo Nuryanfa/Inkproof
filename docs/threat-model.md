@@ -1,4 +1,4 @@
-# Threat Model — PDF Signature Verifier
+# Threat Model — TrueSign
 
 | | |
 |---|---|
