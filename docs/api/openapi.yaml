@@ -1,0 +1,221 @@
+openapi: 3.1.0
+info:
+  title: PDF Signature Verifier API
+  version: 0.1.0
+  description: |
+    Memverifikasi tanda tangan digital pada PDF dan mendeteksi perubahan setelah penandatanganan.
+    Dokumen tidak disimpan. Hasil adalah pemeriksaan teknis, bukan pernyataan keabsahan hukum.
+servers:
+  - url: https://verify.example.com
+    description: Ganti dengan domain produksi
+
+paths:
+  /v1/verify:
+    post:
+      summary: Verifikasi satu PDF
+      operationId: verifyDocument
+      security:
+        - {}
+        - apiKey: []
+      parameters:
+        - name: format
+          in: query
+          schema: { type: string, enum: [json, html], default: json }
+        - name: revocation
+          in: query
+          description: "offline melewati cek OCSP/CRL; status maksimal INDETERMINATE"
+          schema: { type: string, enum: [online, offline], default: online }
+        - name: lang
+          in: query
+          schema: { type: string, enum: [id, en], default: id }
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: PDF, maksimal 20 MiB
+      responses:
+        "200":
+          description: Verifikasi selesai (apa pun status dokumennya)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Report" }
+            text/html:
+              schema: { type: string }
+        "400": { $ref: "#/components/responses/Error" }
+        "401": { $ref: "#/components/responses/Error" }
+        "413": { $ref: "#/components/responses/Error" }
+        "415": { $ref: "#/components/responses/Error" }
+        "429":
+          description: Kuota atau rate limit terlampaui
+          headers:
+            Retry-After: { schema: { type: integer } }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "503":
+          description: Server sedang penuh
+          headers:
+            Retry-After: { schema: { type: integer } }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+
+  /v1/trust:
+    get:
+      summary: Informasi trust store yang aktif
+      operationId: getTrustStore
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version: { type: string, example: "2026-10-24" }
+                  roots:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name: { type: string }
+                        sha256: { type: string }
+                        source: { type: string, format: uri }
+
+  /healthz:
+    get:
+      summary: Liveness
+      responses:
+        "200": { description: OK }
+
+  /readyz:
+    get:
+      summary: Readiness (trust store termuat, DB terhubung bila dipakai)
+      responses:
+        "200": { description: Siap }
+        "503": { description: Belum siap }
+
+components:
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer
+      description: "Authorization: Bearer <api_key>. Tanpa key berlaku kuota anonim per IP."
+
+  responses:
+    Error:
+      description: Request tidak bisa diproses
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+
+  schemas:
+    Status:
+      type: string
+      enum: [TOTAL-PASSED, TOTAL-FAILED, INDETERMINATE]
+
+    LocalizedText:
+      type: object
+      properties:
+        id: { type: string }
+        en: { type: string }
+
+    Finding:
+      type: object
+      required: [code, severity, message]
+      properties:
+        code: { type: string, example: MODIFIED_AFTER_SIGNING }
+        severity: { type: string, enum: [info, warning, critical] }
+        message: { $ref: "#/components/schemas/LocalizedText" }
+        details: { type: object, additionalProperties: true }
+
+    Certificate:
+      type: object
+      properties:
+        subject: { type: string }
+        issuer: { type: string }
+        serial: { type: string }
+        not_before: { type: string, format: date-time }
+        not_after: { type: string, format: date-time }
+
+    Signature:
+      type: object
+      required: [index, status, findings]
+      properties:
+        index: { type: integer }
+        field_name: { type: string }
+        revision: { type: integer }
+        status: { $ref: "#/components/schemas/Status" }
+        sub_indication: { type: [string, "null"] }
+        signer:
+          type: object
+          properties:
+            common_name: { type: string }
+            organization: { type: string }
+            serial: { type: string }
+        signing_time:
+          type: object
+          properties:
+            value: { type: string, format: date-time }
+            source: { type: string, enum: [timestamp, claimed, none] }
+        chain:
+          type: array
+          items: { $ref: "#/components/schemas/Certificate" }
+        revocation:
+          type: object
+          properties:
+            method: { type: string, enum: [OCSP, CRL, none] }
+            status: { type: string, enum: [good, revoked, unknown, unavailable, skipped] }
+            produced_at: { type: string, format: date-time }
+        byte_range:
+          type: object
+          properties:
+            covers_whole_revision: { type: boolean }
+        findings:
+          type: array
+          items: { $ref: "#/components/schemas/Finding" }
+
+    Report:
+      type: object
+      required: [schema_version, verification_id, status, document, signatures]
+      properties:
+        schema_version: { type: string, example: "1.0" }
+        verification_id: { type: string }
+        verified_at: { type: string, format: date-time }
+        verifier_version: { type: string }
+        trust_store_version: { type: string }
+        document:
+          type: object
+          properties:
+            sha256: { type: string }
+            size_bytes: { type: integer }
+            revisions: { type: integer }
+        status: { $ref: "#/components/schemas/Status" }
+        sub_indication: { type: [string, "null"] }
+        summary: { $ref: "#/components/schemas/LocalizedText" }
+        signatures:
+          type: array
+          items: { $ref: "#/components/schemas/Signature" }
+        findings:
+          type: array
+          description: Temuan tingkat dokumen (misalnya NO_SIGNATURE, TRAILING_DATA)
+          items: { $ref: "#/components/schemas/Finding" }
+
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [code, message]
+          properties:
+            code: { type: string, example: FILE_TOO_LARGE }
+            message: { type: string }
+            request_id: { type: string }
