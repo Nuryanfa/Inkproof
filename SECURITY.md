@@ -19,7 +19,7 @@ Kami akan merespons dalam **7 hari kerja** dan berkoordinasi untuk memperbaiki s
 Yang termasuk scope:
 - `pkg/verify` dan semua paket `internal/*`
 - REST API (`cmd/server`)
-- CLI (`cmd/verifier`)
+- CLI (`cmd/inkproof`)
 - Bypass deteksi manipulasi PDF (false negative pada serangan yang terdokumentasi di threat model)
 
 Yang di luar scope untuk saat ini:

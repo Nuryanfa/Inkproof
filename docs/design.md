@@ -399,6 +399,6 @@ Ringkas; detail di [test-plan.md](test-plan.md).
 
 ## 17. Pertanyaan terbuka
 
-- Apakah `digitorus/pdfsign` mengekspos struktur revisi dan ByteRange yang cukup untuk `internal/diff`, atau perlu parser xref sendiri? Diputuskan di spike F0.
+- ~~Apakah `digitorus/pdfsign` mengekspos struktur revisi dan ByteRange yang cukup untuk `internal/diff`?~~ Tidak. Spike tahap 1 menunjukkan parser xref/revisi harus ditulis sendiri di `internal/pdf` (lihat ADR-0001, Hasil spike).
 - Format laporan untuk keperluan hukum: apakah HTML cukup, atau perlu PDF/A yang ditandatangani server (P2)?
 - Perlukah mendukung verifikasi QR code dokumen cetak (mengarahkan ke sistem penerbit)? Saat ini di luar scope.

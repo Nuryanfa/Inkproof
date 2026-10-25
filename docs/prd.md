@@ -196,7 +196,7 @@ Detail per fase ada di [roadmap.md](roadmap.md).
 ## 12. Risiko dan asumsi
 
 **Asumsi**
-- Library `digitorus/pdfsign` dan `digitorus/pkcs7` cukup untuk parsing; jika tidak, sebagian parser ditulis sendiri di `internal/pdf` (tanpa menulis kriptografi sendiri).
+- `digitorus/pkcs7` cukup untuk parsing CMS. Struktur PDF (xref, revisi, signature dictionary) ditulis sendiri di `internal/pdf`, tanpa menulis kriptografi sendiri (hasil spike tahap 1, ADR-0001).
 - Root CA PSrE Indonesia bisa diperoleh dari sumber resmi publik.
 - Sampel PDF ber-TTE asli bisa diperoleh secara sah (dokumen milik sendiri atau publik).
 
