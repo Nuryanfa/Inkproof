@@ -11,11 +11,11 @@ Planning lengkap (konteks pasar dan strategi): [dokumen planning](https://claude
 - [x] Buat repo `inkproof`, `go mod init github.com/nuryanfa/inkproof`, struktur folder sesuai `docs/design.md` §2
 - [x] CI dasar: `golangci-lint`, `go test -race`, `govulncheck`
 - [x] Makefile dengan target di CLAUDE.md
-- [ ] Spike library di `spike/` (kriteria di ADR-0001), tulis hasilnya, ubah status ADR-0001
+- [x] Spike library di `spike/` (kriteria di ADR-0001), tulis hasilnya, ubah status ADR-0001
   - [x] Tahap 1: PKI tiruan, 6 PDF uji, fuzz 60 detik (hasil di ADR-0001)
-  - [ ] Tahap 2: uji pada ≥3 PDF ber-TTE asli, lalu ADR-0001 → Accepted
+  - [x] Tahap 2: uji pada ≥3 PDF ber-TTE asli, lalu ADR-0001 → Accepted
 - [ ] Kumpulkan root CA Indonesia dari sumber resmi, isi `trust/manifest.yaml`
-- [ ] Kumpulkan minimal 3 PDF ber-TTE asli untuk uji silang
+- [x] Kumpulkan minimal 3 PDF ber-TTE asli untuk uji silang (disimpan lokal, tidak di repo)
 - [ ] Siapkan VM: user non-root, SSH key-only, firewall, swap 2 GB, Docker
 - [ ] Putuskan nama produk dan lisensi (nama: **Inkproof**; lisensi belum)
 
@@ -93,3 +93,4 @@ Prioritas ditentukan dari hasil pilot. Kandidat:
 |---|---|---|
 | 2026-10-24 | F0 | Dokumentasi awal dibuat: PRD, design, threat model, ADR 0001–0005, test plan |
 | 2026-10-25 | F0 | Repo, CI, Makefile selesai. Spike tahap 1: `pdfsign/verify` dan `digitorus/pdf` ditolak untuk jalur produksi; `internal/pdf` ditulis sendiri, CMS pakai `digitorus/pkcs7` |
+| 2026-10-30 | F0 | Spike tahap 2 pada 3 PDF ber-TTE asli (BSrE) lolos semua kriteria, termasuk satu kasus negatif nyata. ADR-0001 Accepted. Dokumen uji tidak disimpan di repo |

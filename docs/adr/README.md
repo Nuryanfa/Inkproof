@@ -4,7 +4,7 @@ Catatan keputusan arsitektur. Satu file per keputusan, tidak diedit setelah `Acc
 
 | No | Judul | Status |
 |---|---|---|
-| [0001](0001-go-and-library-choice.md) | Go dan pemilihan library PDF/CMS | Proposed (spike tahap 1 selesai, menunggu PDF asli) |
+| [0001](0001-go-and-library-choice.md) | Go dan pemilihan library PDF/CMS | Accepted |
 | [0002](0002-no-document-storage.md) | Dokumen tidak pernah disimpan | Accepted |
 | [0003](0003-etsi-status-model.md) | Model status mengikuti ETSI EN 319 102-1 | Accepted |
 | [0004](0004-egress-guard.md) | Semua akses keluar lewat egress guard | Accepted |
