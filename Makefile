@@ -20,6 +20,9 @@ vuln:
 fuzz:
 	@for t in $(FUZZ_TARGETS); do \
 		pkg=$${t%%:*}; name=$${t##*:}; \
+		if ! grep -qs "^func $$name(" $$pkg/*_test.go; then \
+			echo "==> $$name ($$pkg): not implemented yet, skipping"; continue; \
+		fi; \
 		echo "==> $$name ($$pkg)"; \
 		$(GO) test $$pkg -run=^$$ -fuzz=^$$name$$ -fuzztime=$(FUZZTIME) || exit 1; \
 	done

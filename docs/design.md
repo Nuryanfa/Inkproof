@@ -18,7 +18,7 @@ flowchart TB
     subgraph Clients
         WEB[Web UI]
         APIC[Klien API]
-        CLI[CLI verifier]
+        CLI[CLI inkproof]
     end
 
     CADDY[Caddy<br/>HTTPS, rate limit]
@@ -60,7 +60,7 @@ flowchart TB
 
 ```
 cmd/
-  verifier/            # CLI (main.go, flag parsing, format output)
+  inkproof/            # CLI (main.go, flag parsing, format output)
   server/              # HTTP server (API + web UI)
 pkg/verify/            # API publik library
 internal/

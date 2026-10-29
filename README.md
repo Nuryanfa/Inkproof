@@ -30,9 +30,9 @@ Dokumen ber-TTE (tanda tangan elektronik tersertifikasi) makin umum di Indonesia
 
 ```bash
 # CLI
-verifier check kontrak.pdf
-verifier check kontrak.pdf --format json --trust ./my-trust-store
-verifier check kontrak.pdf --offline
+inkproof check kontrak.pdf
+inkproof check kontrak.pdf --format json --trust ./my-trust-store
+inkproof check kontrak.pdf --offline
 
 # API
 curl -F file=@kontrak.pdf https://<domain>/v1/verify
