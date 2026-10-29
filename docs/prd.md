@@ -207,7 +207,7 @@ Detail per fase ada di [roadmap.md](roadmap.md).
 - [ ] Nama produk final dan domain.
 - [ ] Segmen pertama untuk validasi pasar: HR atau koperasi/leasing?
 - [ ] Apakah layanan berbayar nanti wajib terdaftar sebagai PSE Lingkup Privat? Perlu dicek sebelum menerima pembayaran.
-- [ ] Lisensi repo: MIT/Apache-2.0 untuk library, dengan layanan hosted sebagai produk berbayar? Atau AGPL untuk melindungi versi hosted?
+- [x] Lisensi repo: **Apache-2.0** (diputuskan 2026-10-30). Layanan hosted tetap bisa menjadi produk berbayar; kode tetap terbuka.
 
 ## 14. Glosarium
 

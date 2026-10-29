@@ -17,7 +17,7 @@ Planning lengkap (konteks pasar dan strategi): [dokumen planning](https://claude
 - [ ] Kumpulkan root CA Indonesia dari sumber resmi, isi `trust/manifest.yaml`
 - [x] Kumpulkan minimal 3 PDF ber-TTE asli untuk uji silang (disimpan lokal, tidak di repo)
 - [ ] Siapkan VM: user non-root, SSH key-only, firewall, swap 2 GB, Docker
-- [ ] Putuskan nama produk dan lisensi (nama: **Inkproof**; lisensi belum)
+- [x] Putuskan nama produk dan lisensi (nama: **Inkproof**; lisensi: **Apache-2.0**)
 
 **Gate F0:** library terpilih (ADR-0001 Accepted), VM siap.
 

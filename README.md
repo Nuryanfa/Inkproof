@@ -81,4 +81,4 @@ make run            # server lokal di :8080
 
 ## Lisensi
 
-Belum ditentukan.
+[Apache License 2.0](LICENSE). Copyright 2026 Nur Yanfa.
